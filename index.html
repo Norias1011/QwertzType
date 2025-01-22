@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>AzerType</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <h1>QwertzType</h1>
+        <h2>The new challenge to write faster!</h2>
+        <h3>QwertzType is an online game to learn how to type faster on your keyboard</h3>
+    </header>
+    <main>
+        <div class="selectionZone">
+            <p>You can select which option and type the word or sentences writen below.</p>
+            <div class="selectionSource">
+                <input type="radio" name="selectionZone" id="word" value="1" checked>
+                <label for="word">Words</label>
+                <input type="radio" name="selectionZone" id="sentence" value="2">
+                <label for="sentence">Sentences</label>
+            </div>
+        </div>
+
+        <div class="propZone">
+            Qwertz
+        </div>
+
+        <div class="typeZone">
+            <input type="text" id="writingInput" name="writingInput">
+            <button id="submitButton">Submit</button>
+        </div>
+
+        <div class="score">
+            Your final Score : <span>0</span>
+        </div>
+
+        <div class="shareButton">
+            <button>Share my result</button>
+        </div>
+    </main>
+    <footer>
+        Made by Norias1011.
+    </footer>
+</body>
+<script src="script/config.js"></script>
+<script src="script/script.js"></script>
+<script src="script/main.js"></script>
+<script src="script/popup.js"></script>
+</html>
