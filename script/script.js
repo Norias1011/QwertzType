@@ -20,17 +20,12 @@ function start_game()
 
     shareButton.addEventListener("submit", (event) => {
         event.preventDefault();
-        let shareName = document.getElementById("name").value;
-        let shareEmail = document.getElementById("email").value;
-        if (validateName(shareName) && validateEmail(shareEmail)) {
-            console.log(shareEmail)
-            showEmail(shareName, shareEmail, score);
-        } else {
-            console.log("Mistake in the name or email");
-        }
+        manageForm(score);
     })
 
     showWords(gameList[i]);
+
+
     buttonSubmit.addEventListener("click", () => {
         console.log(playerInput.value);
         if (playerInput.value === gameList[i]) {
@@ -63,7 +58,6 @@ function start_game()
             }
         })
     }
-
     printResult(score, i);
 }
 
@@ -80,10 +74,42 @@ function showEmail(name, email, score) {
 
 function validateName(name) {
     let regex = new RegExp("[a-zA-Z]{2}")
-    return regex.test(name)
+    if (!regex.test(name)) {
+        throw new Error(`Bad name, at least 2 characters needed`)
+    }
 }
 
 function validateEmail(email) {
     let regex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
-    return regex.test(email)
+    if (!regex.test(email)) {
+        throw new Error(`Bad email, try with your actual email`)
+    }
+}
+
+function manageForm(score) {
+
+    try {
+        let shareName = document.getElementById("name").value;
+        let shareEmail = document.getElementById("email").value;
+        validateName(shareName)
+        validateEmail(shareEmail)
+        errorMessage("");
+        showEmail(shareName, shareEmail, score);
+    } catch (e) {
+        console.log("Error : " + e.message);
+        errorMessage(e.message);
+    }
+}
+
+function errorMessage(message) {
+    let error = document.getElementById("errorMessage");
+
+    if (!error) {
+        let popup = document.querySelector(".popup");
+        error = document.createElement("span");
+        error.id = "errorMessage";
+        popup.append(error);
+    }
+
+    error.innerText = message
 }
